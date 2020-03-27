@@ -2,6 +2,7 @@
   "name": "vapour-backend",
   "version": "1.0.0",
   "description": "",
+  "cacheDirectories": ["client/node_modules", "node_modules"],
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
