@@ -1,9 +1,9 @@
 const express = require("express"),
   http = require("http");
 const socketio = require("socket.io");
-// const WebSocketServer = require("ws").Server;
-// const wss = new WebSocketServer({ port: 9090 });
-// const { wssHandler } = require('./signalling-server/signal-ws');
+const WebSocketServer = require("ws").Server;
+const wss = new WebSocketServer({ port: 9090 });
+const { wssHandler } = require('./signalling-server/signal-ws');
 const cors = require('cors');
 const socketHandler = require('./web-socket/socketHandler')
 
@@ -55,7 +55,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// wss.on("connection", wssHandler);
+wss.on("connection", wssHandler);
 
 io.on('connection', socket => socketHandler(io, socket));
 
