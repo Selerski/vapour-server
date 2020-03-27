@@ -20,7 +20,11 @@ const io = socketio(server, {
   pingTimeout: 30000
 });
 
-app.options('*', cors())
+// app.options('*', cors())
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 // Passport config
 require("./config/passport")(passport);
@@ -33,9 +37,6 @@ mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected..."))
   .catch(e => console.log(e));
-
-//CORS
-
 
 //Bodyparser
 app.use(express.urlencoded({ extended: true }));
