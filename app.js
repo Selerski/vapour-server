@@ -2,7 +2,7 @@ const express = require("express"),
   http = require("http");
 const socketio = require("socket.io");
 const WebSocketServer = require("ws").Server;
-const wss = new WebSocketServer({ port: process.env.PORT || 4000 });
+const wss = new WebSocketServer({ port: process.env.PORT || 9090 });
 const { wssHandler } = require('./signalling-server/signal-ws');
 const cors = require('cors');
 const socketHandler = require('./web-socket/socketHandler')
@@ -20,7 +20,7 @@ const io = socketio(server, {
   pingTimeout: 30000
 });
 
-app.options('*', cors()) // include before other routes
+app.options('*', cors())
 
 // Passport config
 require("./config/passport")(passport);
