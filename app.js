@@ -20,6 +20,8 @@ const io = socketio(server, {
   pingTimeout: 30000
 });
 
+app.options('*', cors()) // include before other routes
+
 // Passport config
 require("./config/passport")(passport);
 
@@ -33,7 +35,6 @@ mongoose
   .catch(e => console.log(e));
 
 //CORS
-app.use(cors({credentials: true, origin: 'https://5e7dda680caa3913093668db--awesome-jang-73379b.netlify.com/'}));
 
 
 //Bodyparser
