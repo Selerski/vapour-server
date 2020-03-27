@@ -5,6 +5,7 @@ const WebSocketServer = require("ws").Server;
 const wss = new WebSocketServer({ port: process.env.PORT || 9090 });
 const { wssHandler } = require('./signalling-server/signal-ws');
 const cors = require('cors');
+const path = require('path');
 const socketHandler = require('./web-socket/socketHandler')
 
 const mongoose = require('mongoose');
