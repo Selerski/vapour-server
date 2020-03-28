@@ -36,7 +36,7 @@ module.exports = {
   findAll: async (req, res) => {
     const users = await User.find(
       {},
-      '_id name avatar',
+      '_id name avatar messages',
       (err, data) => {
         if (err) {
           return err;
