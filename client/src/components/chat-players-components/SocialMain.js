@@ -84,17 +84,17 @@ const SocialMain = ({ currentUser, socket }) => {
 
   const handleChatSubmit = message => {
     if (message) {
-      sendMessage(
-        ENDPOINT + 'messages-route',
-        message,
-        secondUser._id,
-        currentUser._id,
-        currentUser.name
-      )
-        .then(res => {
-          dispatch(socketPostMessage(res, () => {}, socket));
-        })
-        .catch(err => err);
+      //   sendMessage(
+      //     ENDPOINT + 'messages-route',
+      //     message,
+      //     secondUser._id,
+      //     currentUser._id,
+      //     currentUser.name
+      //   )
+      //     .then(res => {
+      dispatch(socketPostMessage(message, () => {}, socket));
+      // })
+      // .catch(err => err);
     }
   };
 

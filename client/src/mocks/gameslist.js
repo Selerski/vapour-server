@@ -26,7 +26,7 @@ export default [
     name: "Going Epi",
     image: epi,
     description:
-      "use arrow keys to get as many food items as you can, before the virus gets you",
+      "Use arrow keys to get as many food items as you can, before the virus gets you",
     url: `https://whispering-ocean-93586.herokuapp.com/games/going-epi`,
     multiplayer: false
   },
@@ -35,7 +35,7 @@ export default [
     name: "Snake",
     image: snake,
     description:
-      'Eat as many apples as you can without ',
+      'Control the snake with arrow keys to eat as many apples as you can!',
     url: `https://whispering-ocean-93586.herokuapp.com/games/snake/snake.html`,
     multiplayer: false
   },
