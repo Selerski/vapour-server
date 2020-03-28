@@ -1,4 +1,4 @@
-const baseURL = "https://whispering-ocean-93586.herokuapp.com/users/";
+const baseURL = `${process.env.REACT_APP_HEROKU_URL}users/`;
 
 export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const UPDATE_MESSAGES = "UPDATE_MESSAGES";

@@ -9,7 +9,7 @@ const Navigation = ({ currentUser, socket }) => {
   const dispatch = useDispatch();
 
   const logout = () => {
-    fetch('https://whispering-ocean-93586.herokuapp.com/users/logout', {
+    fetch(`${process.env.REACT_APP_HEROKU_URL}users/logout`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

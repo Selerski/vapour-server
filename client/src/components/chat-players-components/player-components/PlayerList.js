@@ -7,14 +7,9 @@ const PlayerList = ({
   secondUser,
   currentUser,
   players,
-  handleShowCall,
   handleShowChat,
-  handleLeave,
   calling,
-  setCalling
 }) => {
-  window.setIncomingCall = {};
-  window.setEndCall = {};
 
   const playerListToComponent = players.map(player => {
     return (
@@ -23,9 +18,7 @@ const PlayerList = ({
           player={player}
           key={player._id}
           handleShowChat={handleShowChat}
-          setCalling={setCalling}
           calling={calling}
-          handleShowCall={handleShowCall}
         />
       )
     );
@@ -43,22 +36,6 @@ const PlayerList = ({
         <h3 className={currentUser.status ? "button" : "disabled"}>
           {currentUser.name}
         </h3>
-
-        {/* <select
-          className="player-list__status-selector"
-          value={currentUser.status}
-          onChange={e => {
-            e.preventDefault();
-            setCurrentUser(
-              Object.assign({ ...currentUser }, { status: e.target.value })
-            );
-            console.log(currentUser);
-          }}
-        >
-          <option value={1}>online</option>
-          <option value={2}>away</option>
-          <option value={0}>offline</option>
-        </select> */}
       </div>
       <div className="player-list__list-container">{playerListToComponent}</div>
     </div>

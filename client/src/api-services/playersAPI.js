@@ -1,10 +1,15 @@
 const getPlayers = async ENDPOINT => {
-  const response = await fetch(
-    //from parameter determined the person who has LOGGED IN, to detetmines to whom the messages will be sent
-    ENDPOINT + `users/find-all`
-  ).catch(err => err);
-
-  return response.json();
+  const url = `${ENDPOINT}users/find-all`;
+  const response = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  })
+    .then(res => res.json())
+    .catch(err => console.log(err));
+  return response;
 };
 
 export { getPlayers };

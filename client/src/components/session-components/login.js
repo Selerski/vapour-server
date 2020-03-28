@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import ErrorMessage from "./login-error";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import "../../styles/session-styles/login-form.css";
+import React, { useState } from 'react';
+import ErrorMessage from './login-error';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import '../../styles/session-styles/login-form.css';
 
 function Login() {
   const isAuth = useSelector(({ loginReducer }) => loginReducer.isAuth);
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const onEmailChange = event => {
     setEmail(event.target.value);
@@ -25,12 +25,12 @@ function Login() {
       email,
       password
     };
-    fetch("https://whispering-ocean-93586.herokuapp.com/users/login", {
-      method: "POST",
+    fetch(`${process.env.REACT_APP_HEROKU_URL}users/login`, {
+      method: 'POST',
       headers: {
-        "content-type": "application/json"
+        'content-type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify(post)
     })
       .then(res => (res.status < 400 ? res : Promise.reject(res)))
@@ -40,7 +40,7 @@ function Login() {
         if (data.message) {
           setError(data.message);
         } else if (data.user) {
-          dispatch({ type: "AUTHENTICATE", user: data.user });
+          dispatch({ type: 'AUTHENTICATE', user: data.user });
         }
       });
   };
@@ -76,11 +76,11 @@ function Login() {
         />
       </form>
       <p className="login-form__text">
-        Don't have an account? Please click here to{" "}
+        Don't have an account? Please click here to{' '}
         <Link
           className="button login-form__link"
-          style={{ display: "inline" }}
-          to={"/register"}
+          style={{ display: 'inline' }}
+          to={'/register'}
         >
           Register
         </Link>

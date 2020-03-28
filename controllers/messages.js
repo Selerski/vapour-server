@@ -2,11 +2,6 @@ const Message = require('../models/Message');
 const User = require('../models/User');
 
 module.exports = {
-  getAll: (req, res) => {
-    Message.find({}, (err, messages) => {
-      res.send(messages);
-    });
-  },
   postMessage: async (req, res) => {
     const { message, recipientId, senderId, senderName } = req.body;
 
@@ -19,10 +14,7 @@ module.exports = {
       to: recipient._id,
       senderName: senderName
     });
-
-
     let mapContent = sender.messages.get(recipient._id.toString());
-
     let messageHistory = sender.messages.get(recipient._id.toString())
       .messageHistory;
     mapContent.messageHistory = [...messageHistory, newMessage];

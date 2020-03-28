@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import ErrorMessage from "./ErrorMessage";
-import SuccessMessage from "./SuccessMessage";
-import { Link } from "react-router-dom";
-import "../../styles/session-styles/signup-form.css";
+import React, { Component } from 'react';
+import ErrorMessage from './ErrorMessage';
+import SuccessMessage from './SuccessMessage';
+import { Link } from 'react-router-dom';
+import '../../styles/session-styles/signup-form.css';
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
-      success: "",
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
+      success: '',
       errors: []
     };
     this.onChange = this.onChange.bind(this);
@@ -29,10 +29,10 @@ class SignUp extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    fetch("http://localhost:4000/users/register", {
-      method: "POST",
+    fetch(`${process.env.REACT_APP_HEROKU_URL}users/register`, {
+      method: 'POST',
       headers: {
-        "content-type": "application/json"
+        'content-type': 'application/json'
       },
       body: JSON.stringify(post)
     })
@@ -44,7 +44,7 @@ class SignUp extends Component {
         } else if (data.success) {
           this.setState({ success: data.success });
           setTimeout(() => {
-            this.props.history.push("/login");
+            this.props.history.push('/login');
           }, 2000);
         }
       });
@@ -120,8 +120,8 @@ class SignUp extends Component {
           Have An Account? Click here to
           <Link
             className="button signup-form__link"
-            style={{ display: "inline" }}
-            to={"/login"}
+            style={{ display: 'inline' }}
+            to={'/login'}
           >
             Login
           </Link>

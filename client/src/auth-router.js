@@ -1,36 +1,30 @@
-import React, { useEffect } from "react";
-import { SocketContext } from "./utils/socket-context";
-import Signup from "./components/session-components/signup";
-import Login from "./components/session-components/login";
-import Landing from "./components/session-components/landing";
-import App from "./App";
-import Loading from "./components/session-components/loading";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { AnimatedSwitch } from "react-router-transition";
+import React, { useEffect } from 'react';
+import { SocketContext } from './utils/socket-context';
+import Signup from './components/session-components/signup';
+import Login from './components/session-components/login';
+import Landing from './components/session-components/landing';
+import App from './App';
+import Loading from './components/session-components/loading';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { AnimatedSwitch } from 'react-router-transition';
 
 function AuthRouter() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("https://whispering-ocean-93586.herokuapp.com/users", {
+    fetch(`${process.env.REACT_APP_HEROKU_URL}users`, {
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
-      method: "GET"
+      credentials: 'include',
+      method: 'GET'
     })
       .then(res => (res.status < 400 ? res : Promise.reject(res)))
-      .then(res => res.json())
       .then(data => {
-        if (data.user) dispatch({ type: "AUTHENTICATE", user: data.user });
-        else dispatch({ type: "FAILAUTHENTICATE" });
+        if (data.user) dispatch({ type: 'AUTHENTICATE', user: data.user });
+        else dispatch({ type: 'FAILAUTHENTICATE' });
       });
   }, []);
   return (
@@ -41,8 +35,6 @@ function AuthRouter() {
         atActive={{ opacity: 1 }}
         className="App switch-wrapper"
       >
-        {/* <Switch> */}
-
         <Auth exact path="/landing" component={Landing} />
         <Auth exact path="/register" component={Signup} />
         <Auth exact path="/login" component={Login} />
@@ -51,7 +43,6 @@ function AuthRouter() {
             <Protected path="/" component={() => <App socket={socket} />} />
           )}
         </SocketContext.Consumer>
-        {/* </Switch> */}
       </AnimatedSwitch>
     </Router>
   );

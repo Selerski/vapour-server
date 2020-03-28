@@ -11,7 +11,7 @@ export const setAuthToken = token => {
 };
 
 export const signup = (userData) => {
-  return fetch("https://whispering-ocean-93586.herokuapp.com/users/register", {
+  return fetch(`${process.env.REACT_APP_HEROKU_URL}users/register`, {
     method: 'POST',
     headers: postHeaders,
     mode: 'cors',
@@ -23,7 +23,7 @@ export const signup = (userData) => {
 
 export const login = (userData) => {
 
-  return fetch("https://whispering-ocean-93586.herokuapp.com/users/api/login", {
+  return fetch(`${process.env.REACT_APP_HEROKU_URL}users/api/login`, {
     method: 'POST',
     headers: postHeaders,
     mode: 'cors',

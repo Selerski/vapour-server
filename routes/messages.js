@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const {getAll, postMessage} = require('../controllers/messages');
-
-router.get('/', getAll);
+const { postMessage } = require('../controllers/messages');
 
 router.post('/', postMessage);
 
