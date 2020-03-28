@@ -6,7 +6,7 @@ I built Vapour in collaboration with 4 other Codeworks students. We have success
 
 Check out thr production version of the app at: https://whispering-ocean-93586.herokuapp.com/
 
-###Tech stack 
+### Tech stack 
 
 The tech stach for the project included:
 
