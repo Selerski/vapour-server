@@ -17,6 +17,7 @@ const PlayerList = ({
         <PlayerCard
           player={player}
           key={player._id}
+          secondUser={secondUser}
           handleShowChat={handleShowChat}
           calling={calling}
         />

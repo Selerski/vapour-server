@@ -98,12 +98,13 @@ const SocialMain = ({ currentUser, socket }) => {
     }
   };
 
-  const handleShowChat = secondUser => {
-    setSecondUser(secondUser);
-    setChatting(secondUser);
-    setRoomid(secondUser.messages[currentUser._id].roomId);
+  const handleShowChat = secondPlayer => {
+    console.log(secondPlayer)
+    setSecondUser(secondPlayer);
+    setChatting(secondPlayer);
+    setRoomid(secondPlayer.messages[currentUser._id].roomId);
 
-    getPlayerMessages(ENDPOINT, currentUser, secondUser)
+    getPlayerMessages(ENDPOINT, currentUser, secondPlayer)
       .then(res => setMessages(res.messageHistory))
       .catch(err => console.log(err));
   };
