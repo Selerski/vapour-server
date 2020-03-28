@@ -29,7 +29,7 @@ class SignUp extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    fetch(`${process.env.REACT_APP_HEROKU_URL}users/register`, {
+    fetch(`https://whispering-ocean-93586.herokuapp.com/users/register`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

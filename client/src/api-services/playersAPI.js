@@ -1,5 +1,5 @@
 const getPlayers = async ENDPOINT => {
-  const url = `${ENDPOINT}users/find-all`;
+  const url = `https://whispering-ocean-93586.herokuapp.com/users/find-all`;
   const response = await fetch(url, {
     headers: {
       Accept: 'application/json',

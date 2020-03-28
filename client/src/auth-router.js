@@ -13,7 +13,7 @@ function AuthRouter() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HEROKU_URL}users`, {
+    fetch(`https://whispering-ocean-93586.herokuapp.com/users`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

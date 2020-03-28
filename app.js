@@ -18,7 +18,8 @@ const io = socketio(server, {
   pingTimeout: 30000
 });
 
-app.use(cors({ credentials: true, origin: `${process.env.HEROKU_URL}` }));
+app.use(cors({ credentials: true, origin: `http://localhost:3000` }));
+// app.use(cors({ credentials: true, origin: `${process.env.HEROKU_URL}` }));
 //Bodyparser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({limit: '10mb'}));

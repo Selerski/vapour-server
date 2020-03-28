@@ -25,7 +25,7 @@ function Login() {
       email,
       password
     };
-    fetch(`${process.env.REACT_APP_HEROKU_URL}users/login`, {
+    fetch(`https://whispering-ocean-93586.herokuapp.com/users/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -36,7 +36,6 @@ function Login() {
       .then(res => (res.status < 400 ? res : Promise.reject(res)))
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.message) {
           setError(data.message);
         } else if (data.user) {
@@ -76,7 +75,7 @@ function Login() {
         />
       </form>
       <p className="login-form__text">
-        Don't have an account? Please click here to{' '}
+        Don't have an account? Please click here to
         <Link
           className="button login-form__link"
           style={{ display: 'inline' }}
