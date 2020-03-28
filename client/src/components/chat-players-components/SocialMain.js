@@ -99,7 +99,6 @@ const SocialMain = ({ currentUser, socket }) => {
   };
 
   const handleShowChat = secondPlayer => {
-    console.log(secondPlayer)
     setSecondUser(secondPlayer);
     setChatting(secondPlayer);
     setRoomid(secondPlayer.messages[currentUser._id].roomId);
